@@ -39,7 +39,7 @@ class Projects extends Component{
                     </div>
                     <div className="col">
                         
-                            <p className="link"> <a href="">League of Legends App</a> | <a href="https://github.com/dpad22/Python_LoL_App">See the code on GitHub</a></p>
+                            <p className="link"> <a href="https://league-champions-app.herokuapp.com/">League of Legends App</a> | <a href="https://github.com/dpad22/Python_LoL_App">See the code on GitHub</a></p>
                             <p className="content-proj">Full-stack web app utilizing Python and Django to create a League of Legends Champion statistics website complete with user login/registration, favorite user champion tracking, and detailed champion information. Utilized Django and MySQL.</p>
 
                             <i class="fab fa-python">Python</i>
@@ -59,7 +59,7 @@ class Projects extends Component{
                     </div>
                     <div className="col">
                         
-                            <p className="link"> <a href="">Portfolio</a> | <a href="">GitHub</a></p>
+                            <p className="link"> <a href="">Portfolio</a> | <a href="https://github.com/dpad22/React/tree/master/portfolio">GitHub</a></p>
                             <p className="content-proj">The portfolio project was created with React, JavaScript, HTML and CSS. React-router managed all the app routing. To serve as a live project with consistant updates as more projects are completed and ready to share. Showcases some basic to intermediate design proficiency. </p>
 
                             <i className="fab fa-react">React</i>
