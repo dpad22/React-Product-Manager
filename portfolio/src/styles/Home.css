@@ -1,0 +1,33 @@
+.center {
+    text-align: center;
+    color: rgb(99, 121, 245);
+
+}
+
+#content {
+    margin-top: 5%;
+}
+
+.header {
+    font-size: 3em;
+    color: antiquewhite;
+
+}
+
+h3{
+    color: antiquewhite;
+}
+
+a{
+    color:rgb(99, 121, 245);;
+}
+
+html{
+    background: url(https://images.pexels.com/photos/1933239/pexels-photo-1933239.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    /* min-height: 700px;
+    min-width: 100%; */
+}
