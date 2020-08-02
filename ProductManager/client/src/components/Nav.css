@@ -1,0 +1,9 @@
+.nav-link{
+    display: inline-flex;
+    flex-direction: column;
+}
+.nav-bar{
+    background-color: lightblue;
+    position: sticky;
+    top: 0;
+}

@@ -31,7 +31,7 @@ const addProduct = (e) => {
 
 return (
     <div className="container">
-        <h1>Form</h1>
+        <h3>Add New Product</h3>
         <form onSubmit={addProduct}>
 
             <div className="form-group row">

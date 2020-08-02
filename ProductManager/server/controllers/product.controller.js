@@ -1,4 +1,5 @@
 const {Product} = require("../models/product.model");
+const {Sale} = require("../models/product.model");
 
 module.exports = {
 index(req, res) {
@@ -10,6 +11,12 @@ index(req, res) {
 create(req, res) {
     Product.create(req.body)
     .then((newProduct) => res.json(newProduct))
+    .catch((err) => res.json(err));
+},
+
+addSale(req,res) {
+    Sale.create(req.body)
+    .then((newSale) => res.json(newSale))
     .catch((err) => res.json(err));
 },
 
