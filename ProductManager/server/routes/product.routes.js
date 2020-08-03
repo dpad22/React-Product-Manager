@@ -8,7 +8,7 @@ module.exports = (app) => {
     app.post("/api/products", product.create);
 
   // Create a sale
-    app.post("/api/products/:id", sales.addSale);
+    app.post("/api/products/:id", product.addSale);
 
   // Get one product
     app.get("/api/products/:id", product.show)

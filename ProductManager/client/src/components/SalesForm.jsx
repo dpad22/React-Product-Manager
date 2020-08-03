@@ -3,19 +3,20 @@ import axios from "axios";
 import { navigate } from "@reach/router";
 
 const SalesForm = (props) => {
-    const [sale, setSale] = useState(0);
-    const [date_Sold, setDate_Sold] = useState("");
+    const [sale, setSale] = useState([0]);
+    const [date_Sold, setDate_Sold] = useState([""]);
     const [errors, setErrors] = useState({});
 
 
 const addSale = (e) => {
     e.preventDefault();
-    const sale = {
+    const newSale = {
         sale,
         date_Sold
     };
+    console.log(newSale)
     axios
-        .post(`http://localhost:8000/api/products/${props.id}`, sale)
+        .post(`http://localhost:8000/api/products/${props.id}`, newSale)
         .then((res) => {
             if (res.data.errors) {
             setErrors(res.data.errors);
