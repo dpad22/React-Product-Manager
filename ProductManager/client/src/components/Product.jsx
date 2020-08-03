@@ -79,12 +79,12 @@ return (
                 </tr>
                 </thead>
                     <tbody>
-                    {sale.map((sold, i) => (
+                    {/* {sale.map((sold, i) => (
                         <tr key ={i}>
                         <td>{sold.sale}</td>
                         <td>{sold.date_Sold}</td>
                         </tr>
-                    ))}
+                    ))} */}
                     </tbody>
             </table>
     </div>

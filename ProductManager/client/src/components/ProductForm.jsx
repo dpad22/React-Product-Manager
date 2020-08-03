@@ -5,7 +5,7 @@ import { navigate } from "@reach/router";
 const ProductForm = (props) => {
     const [title, setTitle] = useState("");
     const [category, setCategory] = useState("");
-    const [price, setPrice] = useState(1);
+    const [price, setPrice] = useState(0);
     const [description, setDescription] = useState("");
     const [errors, setErrors] = useState({});
 
@@ -34,16 +34,17 @@ return (
         <h3>Add New Product</h3>
         <form onSubmit={addProduct}>
 
-            <div className="form-group row">
+            <div className="row">
             <label htmlFor="title" className="col-sm-2 col-form-label">
                 Title
             </label>
-                <div className="col-sm-10">
+                <div className="input-wrapper">
                     <input
                     type="text"
-                    className="form-control"
+                    className="inputs"
                     onChange={(e) => setTitle(e.target.value)}
                     value={title}
+                    placeholder="Enter Title"
                     />
                     {errors.title ? (
                     <p className="text-danger"> {errors.title.properties.message} </p>
@@ -53,16 +54,17 @@ return (
                 </div>
             </div>
 
-            <div className="form-group row">
+            <div className="row">
             <label htmlFor="title" className="col-sm-2 col-form-label">
                 Category
             </label>
-                <div className="col-sm-10">
+                <div className="input-wrapper">
                     <input
                     type="text"
-                    className="form-control"
+                    className="inputs"
                     onChange={(e) => setCategory(e.target.value)}
                     value={category}
+                    placeholder="Enter Category"
                     />
                     {errors.category ? (
                     <p className="text-danger"> {errors.category.properties.message} </p>
@@ -72,17 +74,17 @@ return (
                 </div>
             </div>
 
-            <div className="form-group row">
+            <div className="row">
             <label htmlFor="title" className="col-sm-2 col-form-label">
                 Price
             </label>
-                <div className="col-sm-10">
+                <div className="input-wrapper">
                     <input
                     type="number"
-                    className="form-control"
+                    className="inputs"
                     onChange={(e) => setPrice(e.target.value)}
                     value={price}
-                    placeholder="$"
+                    placeholder="Enter Price"
                     />
                     {errors.price ? (
                     <p className="text-danger"> {errors.price.properties.message} </p>
@@ -92,16 +94,17 @@ return (
                 </div>
             </div>
 
-            <div className="form-group row">
+            <div className="row">
             <label htmlFor="title" className="col-sm-2 col-form-label">
                 Description
             </label>
-                <div className="col-sm-10">
+                <div className="input-wrapper">
                     <input
                     type="text"
-                    className="form-control"
+                    className="inputs"
                     onChange={(e) => setDescription(e.target.value)}
                     value={description}
+                    placeholder="Enter Description"
                     />
                     {errors.description ? (
                     <p className="text-danger">

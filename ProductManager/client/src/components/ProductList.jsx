@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "@reach/router";
 
+
 const AllProducts = (props) => {
     const [products, setProducts] = useState([]);
     const [state, setState] = useState({
@@ -48,16 +49,16 @@ const AllProducts = (props) => {
     return (
         <div className="container">
             <h3>Available Items</h3>
-            <table className="table table-bordered table-hover">
+            <table id="table-filter" className="table table-bordered table-hover">
                 <thead>
-                <tr>
-                    <th>Category</th>
-                    <th>Title</th>
-                    <th>Price</th>
-                    <th>Sales</th>
-                    <th>Total Sales</th>
-                    <th>Action</th>
-                </tr>
+                    <tr>
+                        <th>Category</th>
+                        <th>Title</th>
+                        <th>Price</th>
+                        <th>Sales</th>
+                        <th>Total Sales</th>
+                        <th>Action</th>
+                    </tr>
                 </thead>
                 <tbody>
                     {products.map((product, i) => (

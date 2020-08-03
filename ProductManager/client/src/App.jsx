@@ -8,6 +8,8 @@ import EditProduct from "./components/EditProduct";
 import Navbar from "./components/Navbar";
 import './App.css';
 import SalesForm from "./components/SalesForm";
+import "react-table-filter/lib/styles.css";
+
 
 function App() {
     return (
