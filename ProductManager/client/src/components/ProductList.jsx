@@ -1,50 +1,16 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React from "react";
 import { Link } from "@reach/router";
 
 
 const AllProducts = (props) => {
-    const [products, setProducts] = useState([]);
-    const [state, setState] = useState({
-        sales: 0,
-        revenue: 0,
-    });
 
-    const getProductsAPI = () => {
-        axios
-        .get("http://localhost:8000/api/products")
-        .then((res) => {
-            setProducts(res.data);
-            getProductsAPI();
-        })
-        .catch((err) => {
-            console.log(err);
-        });
-    };
-
-    const addSale = () => {
-        setState({
-            sales: state.sales + 1,
-            revenue: state.sales * products.price
-        });
-    }
-    const removeSale = () => {
-        setState({
-            sales: state.sales - 1,
-            revenue: state.sales * products.price
-        });
-    }
-
+    const {productList, state, addSale, removeSale } = props
 
     const formatter = new Intl.NumberFormat('en-US', {
         style: 'currency',
         currency: 'USD',
         minimumFractionDigits: 2
     })
-
-    useEffect(() => {
-        getProductsAPI(); // eslint-disable-next-line
-    }, [props]);
     
     return (
         <div className="container">
@@ -61,7 +27,7 @@ const AllProducts = (props) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {products.map((product, i) => (
+                    {productList.map((product, i) => (
                         <tr key={i}>
                         <td>{product.category}</td>
                         <td>{product.title}</td>

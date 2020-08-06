@@ -3,20 +3,20 @@ import axios from "axios";
 import { navigate } from "@reach/router";
 
 const SalesForm = (props) => {
-    const [sale, setSale] = useState([0]);
+    const [sold, setSold] = useState([0]);
     const [date_Sold, setDate_Sold] = useState([""]);
     const [errors, setErrors] = useState({});
 
 
 const addSale = (e) => {
     e.preventDefault();
-    const newSale = {
-        sale,
+    const sale = {
+        sold,
         date_Sold
     };
-    console.log(newSale)
+    console.log(sale)
     axios
-        .post(`http://localhost:8000/api/products/${props.id}`, newSale)
+        .post(`http://localhost:8000/api/products/${props.id}`, sale)
         .then((res) => {
             if (res.data.errors) {
             setErrors(res.data.errors);
@@ -40,12 +40,12 @@ return (
                     <input
                     type="number"
                     className="form-control"
-                    onChange={(e) => setSale(e.target.value)}
-                    value={sale}
+                    onChange={(e) => setSold(e.target.value)}
+                    value={sold}
                     />
-                    {errors.sale ? (
+                    {errors.sold ? (
                     <p className="text-danger">
-                        {errors.sale.properties.message}
+                        {errors.sold.properties.message}
                     </p>
                     ) : (
                     ""

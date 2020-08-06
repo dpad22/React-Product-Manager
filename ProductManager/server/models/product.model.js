@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 
 const SaleSchema = new mongoose.Schema(
     {
-        sale:[{type:Number,required:[true,"Sale cannot be less than 1"]}],
+        sold:[{type:Number,required:[true,"Sale cannot be less than 1"]}],
         date_Sold: [{type:Date,required:[true, "Date cannot be empty"]}]
     }
 )

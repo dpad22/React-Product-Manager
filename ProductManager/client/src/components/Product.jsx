@@ -1,66 +1,27 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import { Link, navigate } from "@reach/router";
-
-// Styling
-const productStyle = {
-    padding: "20px",
-    marginTop: "30px",
-};
-
-const Product = (props) => {
-const [title, setTitle] = useState(props.title);
-const [category, setCategory] = useState(props.category);
-const [price, setPrice] = useState(props.price);
-const [sale, setSale] = useState([0])
-const [date_Sold, setDate_Sold] = useState([""])
-const [description, setDescription] = useState(props.description);// eslint-disable-next-line
-const [errors, setErrors] = useState({});
+import React from "react";
+import { Link } from "@reach/router";
 
 
+const OneProduct = (props) => {
 
-useEffect(() => {
-getOneProduct();
-});
+    const { product,
+            id,
+            sold,
+            date_Sold,
+            deleteProduct
+        } = props
 
-const getOneProduct = () => {
-    axios
-        .get(`http://localhost:8000/api/products/${props.id}`)
-        .then((res) => {
-            getOneProduct();
-            setTitle(res.data.title);
-            setCategory(res.data.category);
-            setPrice(res.data.price);
-            setDescription(res.data.description);
-            setSale(res.data.sale);
-            setDate_Sold(res.data.date_Sold);
-        })
-        .catch((err) => console.log(err));
-};
-
-const deleteProduct = (e) => {
-e.preventDefault();
-    axios
-        .delete(`http://localhost:8000/api/products/${props.id}`)
-        .then((res) => {
-        if (res.data.errors) {
-            setErrors(res.data.errors);
-        } else {
-            navigate("/");
-        }})
-        .catch((err) => console.log(err));
-};
 
 return (
-    <div className="container bg-light" style={productStyle}>
-        <h1>Title: {title}</h1>
-        <p>Category: {category}</p>
-        <p>Price: ${price}</p>
-        <p>Description: {description}</p>
-            <Link to={`/sales/${props.id}`} className="btn btn-primary">
+    <div className="container bg-light">
+        <h1>Title: {product.title}</h1>
+        <p>Category: {product.category}</p>
+        <p>Price: ${product.price}</p>
+        <p>Description: {product.description}</p>
+            <Link to={`/sales/${id}`} className="btn btn-primary">
                 Add Sale
             </Link>
-            <Link to={`/edit/${props.id}`} className="btn btn-success">
+            <Link to={`/edit/${id}`} className="btn btn-success">
                 Edit Product
             </Link>
         <button
@@ -79,16 +40,14 @@ return (
                 </tr>
                 </thead>
                     <tbody>
-                    {/* {sale.map((sold, i) => (
-                        <tr key ={i}>
-                        <td>{sold.sale}</td>
-                        <td>{sold.date_Sold}</td>
-                        </tr>
-                    ))} */}
+                    <tr>
+                        <td>{product.sold}</td>
+                        <td>{product.date_Sold}</td>
+                    </tr>
                     </tbody>
             </table>
     </div>
     );
 };
 
-export default Product;
+export default OneProduct;
