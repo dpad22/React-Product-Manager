@@ -16,15 +16,30 @@ create(req, res) {
 
 addSale(req,res) {
     Sale.create(req.body)
-    .then((newSale) => res.json(newSale))
+    .then(newSale => {
+        Product.findOne({
+            _id: req.params.id
+            })
+            .then(product => {
+                console.log("addSale prod",product.sales)
+                product.sales.push(newSale)
+                product.save()
+                    .then(data => {
+                        res.json(data)
+                    })
+            })
+    })
     .catch((err) => res.json(err));
 },
 
 show(req, res) {
-    Product.findById({
+    Product.findOne({
         _id: req.params.id
     })
-    .then(oneProduct => res.json(oneProduct))
+    .then(oneProduct => {
+        console.log("Controller output", oneProduct)
+        res.json(oneProduct) 
+    })
     .catch(err => res.json(err))
 },
 

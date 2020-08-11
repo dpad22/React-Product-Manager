@@ -5,29 +5,26 @@ import OneProduct from "./Product";
 
 
 const ShowContainer = (props) => {
+
     const [product, setProduct] = useState([])
-    const [id,setId] = useState("")
-    const [sold, setSold] = useState([])
-    const [date_Sold, setDate_Sold] = useState([])
-    const [errors, setErrors] = useState({});
+    const [sales, setSales] = useState([])
+    const [errors, setErrors] = useState({})
+    const [loading, setLoading] = useState(false)
+
 
 const getOneProduct = async() => {
-    let result = await axios
-        .get(`http://localhost:8000/api/products/${props.id}`)
-        .then((res) => {
+    let result = await axios.get(`http://localhost:8000/api/products/${props.id}`)
+        .then((res)=> {
             console.log("data", res.data)
-            console.log("id",props.id)
-            setId(props.id)
-            setSold(res.data.sold);
-            setDate_Sold(res.data.date_Sold);
+            console.log("Sales data", res.data.sales)
+            setProduct(res.data)
+            setSales(res.data.sales)
+            setLoading(true);
             return res.data
-
         })
-        .catch((errors) => {
+        .catch ((errors) => {
             console.log(errors)
     });
-        console.log("result", result)
-        setProduct(result)
 };
 
 const deleteProduct = (e) => {
@@ -43,21 +40,29 @@ e.preventDefault();
         .catch((errors) => console.log(errors));
 };
 
+const sumSales = (arr, type) => {
+
+    return arr.reduce((total, obj) => {
+        return total + obj[type];
+    }, 0);
+}
+    let totalQuantity = sumSales(sales, 'sold');
+        console.log("totalQuantity", totalQuantity )
 
 useEffect(() => {
     getOneProduct(); // eslint-disable-next-line
 }, []);
 
-return (
-    <div>
-        <OneProduct
-        product= { product }
-        id= { id }
-        sold= { sold }
-        date_Sold= { date_Sold }
-        deleteProduct= { deleteProduct }
-        />
-    </div>
+    return (
+            
+        <div>
+            {loading && <OneProduct
+            total= { totalQuantity }
+            product= { product }
+            salesList= { sales }
+            deleteProduct= { deleteProduct }
+            />}
+        </div>
     );
 };
 

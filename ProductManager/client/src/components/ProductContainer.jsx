@@ -8,39 +8,36 @@ import SalesForm from "./SalesForm";
 import ShowContainer from "./ShowContainer";
 
 
-const ProductsContainer = () => {
-    const [products, setProducts] = useState([]);
-    const [state, setState] = useState({
-        sales: 0,
-        revenue: 0,
-    });
+const ProductsContainer = (props) => {
+
+    const [products, setProducts] = useState([])
+    const [sales, setSales] = useState([])
+    const [loading, setLoading] = useState(false)
 
     const getProductsAPI = async() => {
-        const result = await axios
-            .get("http://localhost:8000/api/products")
+        let result = await axios.get("http://localhost:8000/api/products")
             .then((res) => {
+                console.log("Product Data", res.data)
+                setProducts(res.data)
+                // console.log("Sales Data", res.data.)
+                setSales(res.data.products.sales)
+                setLoading(true);
                 return res.data
             })
         .catch((err) => {
             console.log(err);
         });
-
-        console.log('All Prod result', result);
-        setProducts(result);
+        console.log("result", result)
     };
 
-    const addSale = () => {
-        setState({
-            sales: state.sales + 1,
-            revenue: state.sales * products.price
-        });
-    }
-    const removeSale = () => {
-        setState({
-            sales: state.sales - 1,
-            revenue: state.sales * products.price
-        });
-    }
+const total = (arr, type) => {
+
+    return arr.reduce((total, obj) => {
+        return total + obj[type];
+    }, 0);
+}
+    let totalQuantity = total(sales, 'sold');
+        console.log("totalQuantity", totalQuantity )
 
 
     useEffect(() => {
@@ -49,7 +46,10 @@ const ProductsContainer = () => {
     
     return (
         <div>
-            <AllProducts productList= { products } state={ state } addSale={ addSale } removeSale={ removeSale }/>
+            {loading && <AllProducts
+                productList= { products }
+                total= { totalQuantity }
+                />}
                 <Router>
                     <ProductForm path="/new" />
                     <ShowContainer path="/products/:id" />

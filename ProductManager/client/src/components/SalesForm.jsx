@@ -3,8 +3,8 @@ import axios from "axios";
 import { navigate } from "@reach/router";
 
 const SalesForm = (props) => {
-    const [sold, setSold] = useState([0]);
-    const [date_Sold, setDate_Sold] = useState([""]);
+    const [sold, setSold] = useState(0);
+    const [date_Sold, setDate_Sold] = useState("");
     const [errors, setErrors] = useState({});
 
 

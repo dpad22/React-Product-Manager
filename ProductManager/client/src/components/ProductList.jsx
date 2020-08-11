@@ -4,7 +4,9 @@ import { Link } from "@reach/router";
 
 const AllProducts = (props) => {
 
-    const {productList, state, addSale, removeSale } = props
+    const { productList,
+            total
+        } = props
 
     const formatter = new Intl.NumberFormat('en-US', {
         style: 'currency',
@@ -31,13 +33,13 @@ const AllProducts = (props) => {
                         <tr key={i}>
                         <td>{product.category}</td>
                         <td>{product.title}</td>
-                        <td>{product.price}</td>
-                        <td>{state.sales}</td>
-                        <td>{formatter.format(state.sales * product.price)}</td>
+                        <td>{formatter.format(product.price)}</td>
+                        {product.sales.map((list, i)=> (
+                        <td>{total}</td>
+                        ))}
+                        {/* <td>{formatter.format(state.sales * product.price)}</td> */}
                         <td>
                             <Link to={`/products/${product._id}`}>View</Link>
-                            <button onClick={ addSale }>Add Sale</button>
-                            <button onClick={ removeSale } >Remove Sale</button>
                         </td>
                         </tr>
                     ))}
