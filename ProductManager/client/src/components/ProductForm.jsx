@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { navigate } from "@reach/router";
+import './ProductForm.css'
 
 const ProductForm = (props) => {
     const [title, setTitle] = useState("");
@@ -117,7 +118,7 @@ return (
             </div>
 
             <div className="form-group row">
-                <div className="col-sm-10 offset-sm-2">
+                <div className="button">
                     <button type="submit" className="btn btn-primary">
                         Create
                     </button>

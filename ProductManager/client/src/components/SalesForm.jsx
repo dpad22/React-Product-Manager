@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { navigate } from "@reach/router";
+import './SalesForm.css'
 
 const SalesForm = (props) => {
     const [sold, setSold] = useState(0);
-    const [date_Sold, setDate_Sold] = useState("");
+    const [dateSold, setDateSold] = useState(Date);
     const [errors, setErrors] = useState({});
 
 
@@ -12,7 +13,7 @@ const addSale = (e) => {
     e.preventDefault();
     const sale = {
         sold,
-        date_Sold
+        dateSold
     };
     console.log(sale)
     axios
@@ -32,7 +33,7 @@ return (
         <h3>Add New Sale</h3>
         <form onSubmit={addSale}>
 
-            <div className="form-group row">
+            <div className="row">
             <label htmlFor="title" className="col-sm-2 col-form-label">
                 Quantity Sold
             </label>
@@ -53,7 +54,7 @@ return (
                 </div>
             </div>
 
-            <div className="form-group row">
+            <div className="row">
             <label htmlFor="title" className="col-sm-2 col-form-label">
                 Date Sold
             </label>
@@ -61,12 +62,12 @@ return (
                     <input
                     type="date"
                     className="form-control"
-                    onChange={(e) => setDate_Sold(e.target.value)}
-                    value={date_Sold}
+                    onChange={(e) => setDateSold(e.target.value)}
+                    value={dateSold}
                     />
-                    {errors.date_Sold ? (
+                    {errors.dateSold ? (
                     <p className="text-danger">
-                        {errors.date_Sold.properties.message}
+                        {errors.dateSold.properties.message}
                     </p>
                     ) : (
                     ""
@@ -74,7 +75,7 @@ return (
                 </div>
             </div>
 
-            <div className="form-group row">
+            <div className="row">
                 <div className="col-sm-10 offset-sm-2">
                     <button type="submit" className="btn btn-primary">
                         Add Sale

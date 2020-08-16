@@ -16,7 +16,7 @@ const getOneProduct = async() => {
     let result = await axios.get(`http://localhost:8000/api/products/${props.id}`)
         .then((res)=> {
             console.log("data", res.data)
-            console.log("Sales data", res.data.sales)
+            console.log("Sales data", 1)
             setProduct(res.data)
             setSales(res.data.sales)
             setLoading(true);

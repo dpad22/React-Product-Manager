@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { navigate } from "@reach/router";
+import './EditProduct.css'
 
 const EditProduct = (props) => {
 const [title, setTitle] = useState("");
@@ -46,7 +47,7 @@ return (
         <h1>Edit Product Form </h1>
         <form onSubmit={editProduct}>
 
-            <div className="form-group">
+            <div className="row">
                 <label>Title: </label>
                 <input
                     className="form-control"
@@ -61,7 +62,7 @@ return (
                 )}
             </div>
 
-            <div className="form-group">
+            <div className="row">
                 <label>Category: </label>
                 <input
                     className="form-control"
@@ -76,7 +77,7 @@ return (
                 )}
             </div>
 
-            <div className="form-group">
+            <div className="row">
                 <label>Price: </label>
                 <input
                     className="form-control"
@@ -91,7 +92,7 @@ return (
                 )}
             </div>
 
-            <div className="form-group">
+            <div className="row">
                 <label>Description: </label>
                 <input
                     className="form-control"

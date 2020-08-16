@@ -1,9 +1,11 @@
 .nav-link{
     display: inline-flex;
     flex-direction: column;
+    color:#093579;
 }
 .nav-bar{
-    background-color: lightblue;
+    background: rgb(9,53,121);
+    background: linear-gradient(90deg, rgba(9,53,121,1) 8%, rgba(0,212,255,1) 50%, rgba(9,53,121,1) 92%);
     position: sticky;
     top: 0;
 }

@@ -1,6 +1,7 @@
 import React from "react";
+import moment from 'moment'
 import { Link } from "@reach/router";
-
+import './Product.css'
 
 
 const OneProduct = (props) => {
@@ -14,6 +15,7 @@ const OneProduct = (props) => {
         console.log("One Product product",product)
         console.log("total",total)
 
+    
 return (
     <div className="container">
         <h1>Title: { product.title }</h1>
@@ -48,8 +50,8 @@ return (
                         {salesList.map((list, i)=> (
                         <tr key={i}>
                             <td> {list.sold}</td>
-                            <td> {list.date_Sold}</td>
-                            
+                            <td>{moment(list.dateSold).format("MMMM Do, YYYY")}</td>
+                            {console.log("type", typeof(list.dateSold))}
                         </tr>
                         ))}
                     </tbody>
